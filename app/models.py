@@ -5,6 +5,7 @@ from django.db import models
 class Game(models.Model):
     name = models.CharField(max_length=50, default='')
     note = models.CharField(max_length=100)
+    date = models.DateTimeField(default=datetime.now, null=False, blank=False)
 
     def __str__(self):
         return self.note

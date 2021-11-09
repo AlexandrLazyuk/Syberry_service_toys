@@ -5,10 +5,12 @@ from .models import Game, Toy
 class GameSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Game
-        fields = ['id', 'name']
+        fields = ['id', 'note']
 
 
 class ToySerializer(serializers.HyperlinkedModelSerializer):
+    games = GameSerializer(many=True)
+
     class Meta:
         model = Toy
-        fields = ['id', 'name']
+        fields = ['id', 'name', 'games']
